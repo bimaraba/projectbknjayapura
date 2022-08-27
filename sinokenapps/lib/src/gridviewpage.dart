@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sinokenapps/src/usulkp.dart';
+import 'package:sinokenapps/src/usulpensiun.dart';
 
 class GridViewDashboard extends StatefulWidget {
   const GridViewDashboard({Key? key}) : super(key: key);
@@ -57,79 +58,96 @@ class _GridViewDashboardState extends State<GridViewDashboard> {
               ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'images/pensiun.png',
-                  width: 42.0,
-                ),
-                const SizedBox(
-                  height: 14.0,
-                ),
-                Text(
-                  'Usul Pensiun',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'images/k3.png',
-                  width: 42.0,
-                ),
-                const SizedBox(
-                  height: 14.0,
-                ),
-                Text(
-                  'Usul K3',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600),
-                ),
-              ],
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => UsulPensiun()),
+              ));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/pensiun.png',
+                    width: 42.0,
+                  ),
+                  const SizedBox(
+                    height: 14.0,
+                  ),
+                  Text(
+                    'Usul Pensiun',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
           ),
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.blueGrey,
-              borderRadius: BorderRadius.circular(10.0),
+          InkWell(
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: ((context) => UsulKp()),
+              ));
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/k3.png',
+                    width: 42.0,
+                  ),
+                  const SizedBox(
+                    height: 14.0,
+                  ),
+                  Text(
+                    'Usul K3',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'images/konsul.png',
-                  width: 42.0,
-                ),
-                const SizedBox(
-                  height: 14.0,
-                ),
-                Text(
-                  'Konsultasi Online',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w600),
-                ),
-              ],
+          ),
+          InkWell(
+            onTap:(){} ,
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blueGrey,
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    'images/konsul.png',
+                    width: 42.0,
+                  ),
+                  const SizedBox(
+                    height: 14.0,
+                  ),
+                  Text(
+                    'Konsultasi Online',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16.0,
+                        fontWeight: FontWeight.w600),
+                  ),
+                ],
+              ),
             ),
           )
         ],
