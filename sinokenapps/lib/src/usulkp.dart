@@ -153,15 +153,24 @@ class _UsulKpState extends State<UsulKp> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Status')
+                                  Text(
+                                    'Status',
+                                    style: TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  Text('NO NPKP')
                                 ],
                               ),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                Text(':' + snapshot.data![index]['STATUS_BERKAS']),
-                              ],)
+                                  Text(':' +
+                                      snapshot.data![index]['STATUS_BERKAS']),
+                                      Text(':' + snapshot.data![index]['NO_NP_KP'])
+                                ],
+                              )
                             ],
                           ),
                         );
