@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:sinokenapps/src/apiservice.dart';
 import 'package:sinokenapps/src/usulkpmodel.dart';
 
 class UsulKp extends StatefulWidget {
@@ -35,16 +34,23 @@ class _UsulKpState extends State<UsulKp> {
   //   }
   // }
   Future<List<Map<String, dynamic>>> _searchUsulKp(nip) async {
-    // http.Response response = await http.get(Uri.parse('http://192.168.1.8:8000/api/search-kp/nip='));
-    if (_searchUsulKpController != '' ) {
+    http.Response response =
+        await http.get(Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip));
+    if (response.statusCode == 200) {
       print('object');
-      var response = await http.get(
-          Uri.parse('http://192.168.1.8:8000/api/search-kp/nip='),
-          headers: {'Accept': 'application/json'});
+      if (_searchUsulKpController.text != '') {
+        var response = await http.get(
+            Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip),
+            headers: {'Accept': 'application/json'});
+            
+      }
+      print(response.body);
       // if (response.statusCode !=200) return null;
-      return List<Map<String, dynamic>>.from(json.decode(response.body)['data']);
+      return List<Map<String, dynamic>>.from(jsonDecode(response.body)['data']);
 
-    } else{
+      // return List<Map>.from(jsonresponse);
+      // return json.decode(response.body)['data'];
+    } else {
       var response = await http.get(
           Uri.parse('http://192.168.1.8:8000/api/search-kp/nip='),
           headers: {'Accept': 'application/json'});
@@ -140,7 +146,8 @@ class _UsulKpState extends State<UsulKp> {
                       itemCount: snapshot.data!.length,
                       itemBuilder: ((context, index) {
                         return ListTile(
-                          title: Text('NIP : ${snapshot.data![index]['PNS_NIPBARU'].toString()}'),
+                          title: Text(
+                              'NIP : ${snapshot.data![index]['PNS_NIPBARU'].toString()}'),
                         );
                       }),
                     ),
