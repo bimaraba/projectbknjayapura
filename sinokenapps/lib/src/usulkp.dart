@@ -34,15 +34,14 @@ class _UsulKpState extends State<UsulKp> {
   //   }
   // }
   Future<List<Map<String, dynamic>>> _searchUsulKp(nip) async {
-    http.Response response =
-        await http.get(Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip));
+    http.Response response = await http
+        .get(Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip));
     if (response.statusCode == 200) {
       print('object');
       if (_searchUsulKpController.text != '') {
         var response = await http.get(
             Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip),
             headers: {'Accept': 'application/json'});
-            
       }
       print(response.body);
       // if (response.statusCode !=200) return null;
@@ -148,6 +147,23 @@ class _UsulKpState extends State<UsulKp> {
                         return ListTile(
                           title: Text(
                               'NIP : ${snapshot.data![index]['PNS_NIPBARU'].toString()}'),
+                          subtitle: Row(
+                            children: [
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Status')
+                                ],
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                Text(':' + snapshot.data![index]['STATUS_BERKAS']),
+                              ],)
+                            ],
+                          ),
                         );
                       }),
                     ),
