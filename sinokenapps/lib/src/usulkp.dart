@@ -40,7 +40,7 @@ class _UsulKpState extends State<UsulKp> {
       print('object');
       if (_searchUsulKpController.text != '') {
         var response = await http.get(
-            Uri.parse('http://192.168.1.8:8000/api/search-kp/nip=' + nip),
+            Uri.parse('http://api.bkn9jayapura.net/api/search-usulkp/nip=' + nip),
             headers: {'Accept': 'application/json'});
       }
       print(response.body);
